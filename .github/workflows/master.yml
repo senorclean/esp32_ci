@@ -1,0 +1,68 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build_and_test:
+    # The type of runner that the job will run on
+    runs-on: espressif/idf:release-v4.1
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Installs all relevant packages/libraries
+      - name: Install packages
+        run: |
+          pip install cpplint
+          sudo apt install clang-format
+
+      # Export the variables needed to run ESP build system
+      - name: Export ESP-IDF
+        run: . $IDF_PATH/export.sh
+
+      # Builds the application
+      - name: Build application
+        run: |
+          mkdir $GITHUB_WORKSPACE/build/build
+          idf.py -DCMAKE_TOOLCHAIN_FILE=$IDF_PATH/tools/cmake/toolchain-esp32.cmake build
+
+      # Run linter/format checker
+      - name: Run linter/formatter
+        run: |
+          cd $GITHUB_WORKSPACE && ./lint_and_format.sh
+          
+      # Installs GoogleTest framework
+      - name: Install GoogleTest
+        run: |
+          git clone --depth 1 -b release-1.10.0 https://github.com/google/googletest
+          cd $GITHUB_WORKSPACE/googletest
+          mkdir build && cd build && cmake ..
+          sudo make install
+
+      # Builds the application
+      - name: Build tests
+        run: |
+          mkdir $GITHUB_WORKSPACE/tests/build/build
+          cd $GITHUB_WORKSPACE/tests/build/build
+          cmake ..
+          make -j10
+          
+      - name: Run tests
+        run: |
+          cd $GITHUB_WORKSPACE/tests/build/build
+          ./esp32_test.out
