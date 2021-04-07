@@ -35,12 +35,13 @@ jobs:
           pip install cpplint clang-format
 
       # Builds the application
+      # idf.py -DCMAKE_TOOLCHAIN_FILE=$IDF_PATH/tools/cmake/toolchain-esp32.cmake build
       - name: Build application
         run: |
           mkdir build/build && cd build
           . $IDF_PATH/export.sh
           echo "HELLO THERE"
-          idf.py -DCMAKE_TOOLCHAIN_FILE=$IDF_PATH/tools/cmake/toolchain-esp32.cmake build
+          
 
       # Run linter/format checker
       - name: Run linter/formatter
