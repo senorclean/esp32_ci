@@ -19,13 +19,15 @@ jobs:
   build_and_test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container:
-      image: espressif/idf:release-v4.1
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Run box version	
+        uses: docker://espressif/idf:release-v4.1
+        with:
+          entrypoint: $GITHUB_WORKSPACE
 
       # Installs all relevant packages/libraries
       - name: Install packages
