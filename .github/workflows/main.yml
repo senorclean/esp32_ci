@@ -33,10 +33,6 @@ jobs:
           pip install cpplint
           pip install clang-format
 
-      # Export the variables needed to run ESP build system
-      - name: Export ESP-IDF
-        run: . $IDF_PATH/export.sh
-
       # Builds the application
       - name: Build application
         run: |
