@@ -32,8 +32,7 @@ jobs:
       # Installs all relevant packages/libraries
       - name: Install packages
         run: |
-          pip install cpplint
-          pip install clang-format
+          pip install cpplint clang-format click
           apt-get update && apt-get install cmake -y
 
       # Builds the application
