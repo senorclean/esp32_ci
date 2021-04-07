@@ -36,6 +36,7 @@ jobs:
       # Export idf.py
       - name: Export idf
         run: |
+          idf.py
           cd $GITHUB_WORKSPACE
           . $IDF_PATH/export.sh
 
