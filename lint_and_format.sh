@@ -1,7 +1,5 @@
 #!/bin/sh
 
-shopt -s expand_aliases
-
 target_inc_files=$(find inc/ -maxdepth 1 -type f)
 target_src_files=$(find src/ -maxdepth 1 -type f)
 target_lib_rtos_files=$(find lib/rtos/ -maxdepth 1 -type f)
