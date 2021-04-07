@@ -42,9 +42,9 @@ jobs:
       # Builds the application
       - name: Build application
         run: |
-          mkdir build/build
-          cd build
-          $IDF_PATH/tools/idf.py -DCMAKE_TOOLCHAIN_FILE=$IDF_PATH/tools/cmake/toolchain-esp32.cmake build
+          mkdir build/build && cd build
+          . $IDF_PATH/export.sh
+          idf.py -DCMAKE_TOOLCHAIN_FILE=$IDF_PATH/tools/cmake/toolchain-esp32.cmake build
 
       # Run linter/format checker
       - name: Run linter/formatter
