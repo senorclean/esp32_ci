@@ -33,7 +33,7 @@ jobs:
       - name: Install packages
         run: |
           pip install cpplint
-          apt-get update && apt-get install clang-format-10 cmake -y
+          apt-get update && apt-get install clang-format-10 cmake pkg-config -y
 
       # Builds the application
       
