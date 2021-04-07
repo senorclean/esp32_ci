@@ -34,12 +34,10 @@ jobs:
         run: |
           pip install cpplint clang-format
           apt-get update && apt-get install git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0 -y
-          
-      # Install SDK
-      - name: Install SDK
-        run: |
-          $IDF_PATH/install.sh
-          . $IDF_PATH/export.sh
+      
+      # Enable python venv
+      - name: Enable venv
+        run: source $IDF_TOOLS_PATH/python_env/idf4.1_py3.6/bin/activate
 
       # Builds the application
       - name: Build application
