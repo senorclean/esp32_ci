@@ -9,8 +9,8 @@
 #include "spi_flash/include/esp_spi_flash.h"
 
 extern "C" void app_main(void) {
-  RtosWrapperHAL rtos_hal;
-  RtosWrapper rtos_dev(&rtos_hal);
+  rtos::RtosWrapperHAL rtos_hal;
+  rtos::RtosWrapper rtos_dev(&rtos_hal);
 
   printf("Hello world!\n");
   /* Print chip information */

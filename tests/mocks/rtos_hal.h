@@ -7,7 +7,7 @@
 
 #include "lib/rtos/base.h"
 
-class MockRtosHAL : public RtosWrapperBase {
+class MockRtosHAL : public rtos::RtosWrapperBase {
  public:
   MOCK_METHOD(void, TaskDelay, (uint32_t xTicksToDelay), (override));
 };

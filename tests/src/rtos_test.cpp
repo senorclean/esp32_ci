@@ -20,16 +20,15 @@ using ::testing::SetArgPointee;
 class RtosTests : public testing::Test {
  public:
   MockRtosHAL* mock_rtos_hal;
-  RtosWrapper* rtos_dev;
+  rtos::RtosWrapper* rtos_dev;
 
  protected:
   void SetUp() override {
     mock_rtos_hal = new MockRtosHAL;
-    rtos_dev = new RtosWrapper(mock_rtos_hal);
+    rtos_dev = new rtos::RtosWrapper(mock_rtos_hal);
   }
 
   void TearDown() override {
-    delete mock_rtos_hal;
     delete rtos_dev;
   }
 };
@@ -46,7 +45,7 @@ TEST_F(RtosTests, RandomTest) {
 
   // expect
   // initialization
-  EXPECT_CALL(*mock_rtos_hal, vTaskDelay(1000)).Times(1);
+  EXPECT_CALL(*mock_rtos_hal, TaskDelay(1000)).Times(1);
 
   rtos_dev->vTaskDelay(1000);
 
