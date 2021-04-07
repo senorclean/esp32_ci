@@ -37,7 +37,7 @@ jobs:
       
       # Enable python venv
       - name: Enable venv
-        run: source $IDF_TOOLS_PATH/python_env/idf4.1_py3.6/bin/activate
+        run: . $IDF_TOOLS_PATH/python_env/idf4.1_py3.6/bin/activate
 
       # Builds the application
       - name: Build application
