@@ -32,7 +32,8 @@ jobs:
       # Installs all relevant packages/libraries
       - name: Install packages
         run: |
-          pip install cpplint clang-format
+          pip install cpplint
+          apt-get update && apt-get install clang-format-10 -y
 
       # Builds the application
       
