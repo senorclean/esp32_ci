@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
       - name: Install packages
         run: |
           pip install cpplint
-          sudo apt install clang-format
+          apt install clang-format
 
       # Export the variables needed to run ESP build system
       - name: Export ESP-IDF
@@ -54,7 +54,7 @@ jobs:
           git clone --depth 1 -b release-1.10.0 https://github.com/google/googletest
           cd $GITHUB_WORKSPACE/googletest
           mkdir build && cd build && cmake ..
-          sudo make install
+          make install
 
       # Builds the application
       - name: Build tests
