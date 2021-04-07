@@ -1,0 +1,3 @@
+build/build/**
+.vscode/
+tests/build/build/**

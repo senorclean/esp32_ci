@@ -1,0 +1,6 @@
+---
+Language:        C
+Language:        Cpp
+BasedOnStyle:  Google
+ColumnLimit: 100
+SortIncludes: false
