@@ -26,6 +26,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          path: ./
 
       # Installs all relevant packages/libraries
       - name: Install packages
@@ -36,6 +38,8 @@ jobs:
       # Builds the application
       - name: Build application
         run: |
+          ls
+          pwd
           mkdir $GITHUB_WORKSPACE/build/build
           cd $GITHUB_WORKSPACE/build
           $IDF_PATH/tools/idf.py -DCMAKE_TOOLCHAIN_FILE=$IDF_PATH/tools/cmake/toolchain-esp32.cmake build
