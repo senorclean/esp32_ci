@@ -31,7 +31,7 @@ jobs:
       - name: Install packages
         run: |
           pip install cpplint
-          apt-get install clang-format
+          pip install clang-format
 
       # Export the variables needed to run ESP build system
       - name: Export ESP-IDF
