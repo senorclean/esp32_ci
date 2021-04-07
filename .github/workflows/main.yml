@@ -48,7 +48,7 @@ jobs:
       - name: Run linter/formatter
         run: |
           alias clang-format=clang-format-10
-          cd $GITHUB_WORKSPACE && ./lint_and_format.sh
+          cd $GITHUB_WORKSPACE && . ./lint_and_format.sh
           
       # Installs GoogleTest framework
       - name: Install GoogleTest
