@@ -37,6 +37,7 @@ jobs:
       - name: Build application
         run: |
           mkdir $GITHUB_WORKSPACE/build/build
+          cd $GITHUB_WORKSPACE/build
           idf.py -DCMAKE_TOOLCHAIN_FILE=$IDF_PATH/tools/cmake/toolchain-esp32.cmake build
 
       # Run linter/format checker
