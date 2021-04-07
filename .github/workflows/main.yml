@@ -34,6 +34,7 @@ jobs:
         run: |
           pip install cpplint
           pip install clang-format
+          apt-get install cmake
 
       # Builds the application
       - name: Build application
