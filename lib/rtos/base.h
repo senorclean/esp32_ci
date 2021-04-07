@@ -19,8 +19,7 @@ class RtosWrapperBase {
    */
   virtual void TaskDelay(const uint32_t xTicksToDelay) = 0;
 
- protected:
-  ~RtosWrapperBase() {}
+  virtual ~RtosWrapperBase() {}
 };
 
 }  // namespace rtos
