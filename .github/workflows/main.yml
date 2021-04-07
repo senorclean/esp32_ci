@@ -47,7 +47,7 @@ jobs:
       # Run linter/format checker
       - name: Run linter/formatter
         run: |
-          ln -s clang-format /usr/bin/clang-format-10
+          ln -s clang-format-10 /usr/bin/clang-format
           cd $GITHUB_WORKSPACE && ./lint_and_format.sh
           
       # Installs GoogleTest framework
