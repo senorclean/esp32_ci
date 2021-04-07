@@ -28,9 +28,7 @@ class RtosTests : public testing::Test {
     rtos_dev = new rtos::RtosWrapper(mock_rtos_hal);
   }
 
-  void TearDown() override {
-    delete rtos_dev;
-  }
+  void TearDown() override { delete rtos_dev; }
 };
 
 /**
