@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(esp32 C CXX)
 
 set(OUTPUT_FILE ${CMAKE_PROJECT_NAME}.elf)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Convenience variables
 set(PROJECT_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/..)
@@ -75,8 +76,6 @@ target_link_libraries(${OUTPUT_FILE} idf::esp32 idf::freertos idf::spi_flash)
 # Attach additional targets to the executable file for flashing,
 # linker script generation, partition_table generation, etc.
 idf_build_executable(${OUTPUT_FILE})
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 # Extra commands that are run after the binary is built to show the binary size
 # and generate function mapping by both size and location in memory
